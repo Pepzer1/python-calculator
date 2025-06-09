@@ -7,13 +7,13 @@ arch=('any')
 url="https://github.com/Pepzer1/python-calculator/tree/aur"
 license=('MIT')
 depends=('python' 'python-pip')  # системные зависимости
-makedepends=('git')              # если нужен git для сборки
+makedepends=('git')              # для сборки, если нужно git
 source=("git+https://github.com/Pepzer1/python-calculator.git#branch=aur")
 md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname" || exit 1
-  # сборка не нужна, можно пропустить
+  # сборка не требуется
 }
 
 package() {
@@ -22,12 +22,18 @@ package() {
   # Установка Python-зависимостей в директорию пакета
   pip install --root="$pkgdir" --prefix=/usr -r requirements.txt
 
+  # Сделать файл исполняемым
+  chmod +x calculator.py
+
+  # Установка основного скрипта в /usr/bin с именем python-calculator
   mkdir -p "$pkgdir/usr/bin"
   install -Dm755 calculator.py "$pkgdir/usr/bin/python-calculator"
 
+  # Установка иконки
   mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 python-calculator.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/python-calculator.png"
 
+  # Установка десктоп-файла
   mkdir -p "$pkgdir/usr/share/applications"
   install -Dm644 python-calculator.desktop "$pkgdir/usr/share/applications/python-calculator.desktop"
 }
