@@ -23,7 +23,7 @@ package() {
   pip install --root="$pkgdir" --prefix=/usr -r requirements.txt
 
   mkdir -p "$pkgdir/usr/bin"
-  install -Dm755 protocalc.py "$pkgdir/usr/bin/python-calculator"
+  install -Dm755 calculator.py "$pkgdir/usr/bin/python-calculator"
 
   mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 python-calculator.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/python-calculator.png"
