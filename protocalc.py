@@ -430,7 +430,7 @@ class SidebarPanel(customtkinter.CTkFrame):
         # Лейбл "История"
         self.history_label = customtkinter.CTkLabel(
             top_frame,
-            text="История",
+            text="History",
             font=customtkinter.CTkFont(size=14, weight="bold"),
             text_color="#D0BCFF",
         )
